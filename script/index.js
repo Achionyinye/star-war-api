@@ -1,10 +1,41 @@
+// function main() {}
+
+// module.exports = { main }
+
+/**
+ * response = {
+ *  result: [{}, {}]
+ * }
+ * 
+ * xhr.responseText = jsondata
+ */
 
 // Creates a div tag and stored it in a variable called modal
 let modal = document.createElement("div");
+
+/*
+Set class name of variable modal which is still a div tag that we created
+*/
 modal.className = "modal fade";
+
+/*
+Set id of variable modal which is still a div tag that we created
+*/
 modal.id = "exampleModal";
+
+/*
+Set tabIndex of variable modal which is still a div tag that we created
+*/
 modal.tabIndex = "-1";
+
+/*
+Set aria-Label-By of variable modal which is still a div tag that we created
+*/
 modal.ariaLabelby = "exampleModalLabel";
+
+/*
+Set aria-hidden of variable modal which is still a div tag that we created
+*/
 modal.ariaHidden = "true";
 
 let modalDialog = document.createElement("div");
@@ -36,6 +67,8 @@ let modalBody = document.createElement("div");
 modalBody.className = "modal-body";
 modalContent.appendChild(modalBody);
 
+
+
 //created p tag for each option in the bio
 let modalBodyParagragh1 = document.createElement("p");
 modalBodyParagragh1.id = "modal-name";
@@ -62,6 +95,8 @@ async function getAPI() {
     let response = await fetch("https://swapi.dev/api/people/");
     response = await response.json();
 
+    console.log(response, "first call");
+
 
     let i = 1;
 
@@ -72,6 +107,8 @@ async function getAPI() {
 
     //looping throught the API result
     response.results.forEach(result => {
+
+        console.log(result, "first call");
         let container = document.createElement('div');
         container.className = "col-md-3 my-3 d-flex justify-content-center";
 
@@ -136,6 +173,7 @@ async function getSingleAPI(id) {
     let response = await fetch("https://swapi.dev/api/people/" + id);
     response = await response.json();
 
+    console.log(response, "second call")
     //And concatinates to the specified option 
     modalBodyParagragh1.innerHTML = " Name: " + response.name;
     modalBodyParagragh2.innerHTML = " Gender: " + response.gender;
